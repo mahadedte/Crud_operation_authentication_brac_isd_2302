@@ -1,0 +1,56 @@
+{% extends 'index.html'%}
+
+{% block body %}
+<div class="container">
+<form method="POST" enctype="multipart/form-data" class="row g-3">
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% csrf_token %}
+    <div class="col-md-6">
+        <label for="f_name" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="f_name" name="first_name">
+    </div>
+
+    <div class="col-md-6">
+        <label for="l_name" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="l_name" name="last_name">
+    </div>
+
+    <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email">
+    </div>
+    <div class="col-md-6">
+        <label for="pass" class="form-label">Password</label>
+        <input type="password" class="form-control" id="pass" name="password">
+    </div>
+
+    <div class="col-md-4">
+        <label for="gender_selection">Gender</label>
+        <select class="form-select" id="gender_selection" name="gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Others</option>
+        </select>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input class="form-control" type="file" id="image" name="image">
+    </div>
+
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+    </div>
+</form>
+</div>
+{% endblock %}

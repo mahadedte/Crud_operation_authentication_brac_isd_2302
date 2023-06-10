@@ -1,0 +1,60 @@
+{% extends 'index.html'%}
+
+{% block body %}
+<div class="container">
+    <h1 style="text-align:center">Update Profile Information</h1>
+    <form method="POST" enctype="multipart/form-data" class="row g-3">
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            {{message}}
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% csrf_token %}
+        <div class="col-md-6">
+            <label for="f_name" class="form-label">First Name</label>
+            <input type="text" class="form-control" value="{{var_prof.first_name}}" id="f_name" name="first_name">
+        </div>
+
+        <div class="col-md-6">
+            <label for="l_name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" value="{{var_prof.last_name}}" id="l_name" name="last_name">
+        </div>
+
+        <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" value="{{var_prof.email}}" id="email" name="email">
+        </div>
+        <div class="col-md-6">
+            <label for="pass" class="form-label">Password</label>
+            <input type="password" class="form-control" value="{{var_prof.password}}" id="pass" name="password">
+        </div>
+
+        <div class="col-md-4">
+            <label for="gender_selection">Gender</label>
+            <select class="form-select" id="gender_selection" name="gender">
+                <option selected>{{var_prof.gender}}</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Others</option>
+            </select>
+        </div>
+
+        <div>
+            <img style="height: 100px; width: 100px; margin:0 auto display: block;" src="{{var_prof.image.url}}" alt="">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" type="file" id="image" name="image">
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

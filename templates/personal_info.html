@@ -1,0 +1,68 @@
+{% extends 'index.html'%}
+
+{%block body%}
+<div class="container">
+<form method="POST" enctype="multipart/form-data">
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages%}
+        {{ message }}
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% csrf_token %}
+
+    <div class="row g-3">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="First name" aria-label="First name" name="f_name">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="l_name">
+        </div>
+    </div>
+    <br>
+    <div class="input-group mb-3">
+        <span class="input-group-text">@</span>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username" name="user_name">
+            <label for="floatingInputGroup1">Username</label>
+        </div>
+    </div>
+
+
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email_address">
+        <label for="floatingInput">Email address</label>
+    </div>
+
+    <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+        <label for="floatingPassword">Password</label>
+    </div>
+    <br>
+    <select class="form-select" aria-label="Disabled select example" name="gender">
+        <option selected>Choose gender</option>
+        <option >Male</option>
+        <option >Female</option>
+        <option>Others</option>
+    </select>
+    <br>
+    <div class="mb-3">
+        <input class="form-control" type="file" name="image">
+    </div>
+    <br>
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="t_area" name="t_area"></textarea>
+        <label for="t_area">Comments</label>
+    </div>
+    <br>
+    <div>
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+    </div>
+
+</form>
+</div>
+
+{%endblock%}

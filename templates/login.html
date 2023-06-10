@@ -1,0 +1,33 @@
+{% extends 'index.html'%}
+
+{%block body%}
+<div class="container">
+    <br> <br> <br> <br>
+    <h6 style="text-align:center">login (username: mahade , password: 123)</h6>
+    <form method="POST">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            {{message}}
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">User Name</label>
+            <input type="text" class="form-control" aria-describedby="emailHelp" name="user_name">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+
+{%endblock%}
+

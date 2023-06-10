@@ -1,0 +1,66 @@
+{% extends 'index.html'%}
+
+{%block body%}
+<div class="container">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <br>
+    <h3 style="text-align:center"> Personal Information</h3>
+    <div class="container">
+
+        <div class="row">
+            {%for i in all%}
+            <div class="card" style="width: 20rem; auto">
+                <img src="{{i.image.url}}" style="height:100px; width:130px;margin: 0 auto;" class="card-img-top"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Name: {{i.l_name}}</h5>
+                    <p class="card-text">User Name: {{i.user_name}}</p>
+                    <p class="card-text">Email: {{i.email}}</p>
+                    <p class="card-text">Gender: {{i.gender}}</p>
+                    <p class="card-text">Comments: {{i.t_area}}</p>
+                    <div>
+                        <a href="#" class="btn btn-primary">See Details</a>
+                        <a href="{% url 'update_p_profile' i.id %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'persoprod' i.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+
+
+    <br>
+    <h3 style="text-align:center"> Profile</h3>
+    <div class="container">
+
+        <div class="row">
+            {%for i in all_prof%}
+            <div class="card" style="width: 20rem;">
+                <img src="{{i.image.url}}" style="height:100px; width:130px;margin: 0 auto;" class="card-img-top"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Name: {{i.last_name}}</h5>
+                    <p class="card-text">Email: {{i.email}}</p>
+                    <p class="card-text">Gender: {{i.gender}}</p>
+                    <div>
+                        <a href="#" class="btn btn-primary">See Details</a>
+                        <a href="{% url 'update_profile' i.id %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'profdelete' i.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
